@@ -10,7 +10,9 @@ Application has five main pages:
 - New question page - the place where you can add new question,
 - Leaderboard page - the list of all users with their scores.
 
-Overview:
+Demo: https://fraszczakszymon.github.io/reactnd-project-would-you-rather-starter/
+
+### Overview:
 
 Dashboard:
 ![Dashboard](./screenshots/dashboard.png)
@@ -35,7 +37,7 @@ and start the server:
 yarn start
 ```
 
-Would You Rather application will open in your browser.
+"Would You Rather?" application will open in your browser.
 
 ## Data
 

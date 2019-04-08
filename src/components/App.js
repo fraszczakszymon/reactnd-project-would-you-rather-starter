@@ -10,6 +10,8 @@ import Nav from './Nav';
 import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
 
+const basename = window.location.hostname.indexOf('github.io') !== -1 ? '/reactnd-project-would-you-rather-starter/' :  null;
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -19,7 +21,7 @@ class App extends Component {
     const { authedUser } = this.props;
 
     return (
-      <Router>
+      <Router basename={basename}>
         <Fragment>
           <LoadingBar style={{ backgroundColor: '#2196f3', height: '5px' }} />
           <div className='container'>
