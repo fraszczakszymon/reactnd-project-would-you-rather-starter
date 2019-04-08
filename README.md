@@ -2,7 +2,7 @@
 
 This is the code for the final assessment project for Udacity's React & Redux course.
 
-Application has four main pages:
+Application has five main pages:
 
 - Login page - the place where you can pick your user and login,
 - Dashboard/home page - the place where you can find all unanswered and answered questions,
@@ -12,9 +12,9 @@ Application has four main pages:
 
 Overview:
 
-![Dashboard](./screenshots/dashboard.png)
-![Question page](./screenshots/question-page.png)
-![Leaderboard](./screenshots/leaderboard.png)
+![Dashboard](./screenshots/dashboard.png =250x)
+![Question page](./screenshots/question-page.png =250x)
+![Leaderboard](./screenshots/leaderboard.png =250x)
 
 ## Instalation/running
 
