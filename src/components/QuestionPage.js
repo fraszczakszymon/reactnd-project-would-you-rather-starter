@@ -7,20 +7,20 @@ import { handleQuestionAnswer } from '../actions/questions';
 class QuestionPage extends Component {
   static propTypes = {
     authedUser: PropTypes.string.isRequired,
-    author: PropTypes.object.isRequired,
+    author: PropTypes.object,
     id: PropTypes.string.isRequired,
     match: PropTypes.object.isRequired,
-    question: PropTypes.object.isRequired,
+    question: PropTypes.object,
   }
 
   handleVote = (option) => {
-    const { authedUser, dispatch, id } = this.props;
+    const { authedUser, id, vote } = this.props;
 
-    dispatch(handleQuestionAnswer({
+    vote({
       answer: option,
       authedUser,
       qid: id,
-    }))
+    });
   }
 
   render() {
@@ -42,14 +42,14 @@ class QuestionPage extends Component {
           {author.name} asks: <strong>Would you rather</strong>
         </p>
         <p className='center'>
-          <VoteOption 
+          <VoteOption
             authedUser={authedUser}
             onVote={this.handleVote}
             optionId='optionOne'
             question={question}
           />
           or
-          <VoteOption 
+          <VoteOption
             authedUser={authedUser}
             onVote={this.handleVote}
             optionId='optionTwo'
@@ -73,4 +73,10 @@ function mapStateToProps({ authedUser, questions, users }, { match }) {
   };
 }
 
-export default connect(mapStateToProps)(QuestionPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    vote: (answer) => dispatch(handleQuestionAnswer(answer)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionPage);

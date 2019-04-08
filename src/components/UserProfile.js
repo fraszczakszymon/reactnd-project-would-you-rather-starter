@@ -9,14 +9,8 @@ class UserProfile extends Component {
     users: PropTypes.object.isRequired,
   }
 
-  handleLogOut = () => {
-    const { dispatch } = this.props;
-
-    dispatch(setAuthedUser(null));
-  }
-
   render() {
-    const { authedUser, users } = this.props;
+    const { authedUser, logOut, users } = this.props;
     const user = users[authedUser];
 
     return (
@@ -24,7 +18,7 @@ class UserProfile extends Component {
         <img src={user.avatarURL} alt={`${user.name}'s avatar`} className='avatar' />
         <div className='user-info'>
           <p>Hello <strong>{user.name}</strong></p>
-          <span className='btn' onClick={this.handleLogOut}>Log out</span>
+          <span className='btn' onClick={logOut}>Log out</span>
         </div>
       </div>
     );
@@ -38,4 +32,10 @@ function mapStateToProps({ authedUser, users }) {
   };
 }
 
-export default connect(mapStateToProps)(UserProfile);
+function mapDispatchToProps(dispatch) {
+  return {
+    logOut: () => dispatch(setAuthedUser(null)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

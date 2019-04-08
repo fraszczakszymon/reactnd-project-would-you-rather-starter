@@ -15,7 +15,7 @@ class NewQuestion extends Component {
   }
 
   handleSubmit = (event) => {
-    const { authedUser, dispatch, history } = this.props;
+    const { addQuestion, authedUser, history } = this.props;
     const { optionOne, optionTwo } = this.state;
 
     event.preventDefault();
@@ -24,11 +24,11 @@ class NewQuestion extends Component {
       return;
     }
 
-    dispatch(handleAddQuestion({
+    addQuestion({
       author: authedUser,
-      optionOneText: optionOne, 
-      optionTwoText: optionTwo, 
-    }));
+      optionOneText: optionOne,
+      optionTwoText: optionTwo,
+    });
 
     history.push('/');
   }
@@ -50,7 +50,7 @@ class NewQuestion extends Component {
           <strong>Would you rather...</strong>
         </p>
         <p>
-          <input 
+          <input
             id='optionOne'
             onChange={this.handleChange}
             placeholder='First option'
@@ -58,7 +58,7 @@ class NewQuestion extends Component {
             type='text' />
         </p>
         <p>
-          <input 
+          <input
             id='optionTwo'
             onChange={this.handleChange}
             placeholder='Second option'
@@ -66,7 +66,7 @@ class NewQuestion extends Component {
             type='text' />
         </p>
         <p className='right'>
-          <button 
+          <button
             className='btn'
             disabled={!optionOne || !optionTwo}
             type='submit'
@@ -85,4 +85,10 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(NewQuestion));
+function mapDispatchToProps(dispatch) {
+  return {
+    addQuestion: (question) => dispatch(handleAddQuestion(question)),
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewQuestion));

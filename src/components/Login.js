@@ -14,11 +14,10 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     const { userId } = this.state;
-    const { dispatch } = this.props;
+    const { logIn } = this.props;
 
     event.preventDefault();
-
-    dispatch(setAuthedUser(userId));
+    logIn(userId);
   }
 
   handleChange = ({ target }) => {
@@ -38,9 +37,9 @@ class Login extends Component {
         <form onSubmit={this.handleSubmit}>
           <ul>
             {userIds.map((id) => (
-              <li 
-                id={id} 
-                key={id} 
+              <li
+                id={id}
+                key={id}
                 className={`user ${id === userId ? 'active' : null}`}
                 onClick={this.handleChange}
               >
@@ -49,9 +48,9 @@ class Login extends Component {
             ))}
           </ul>
           <p className='right'>
-            <button 
+            <button
               className='btn'
-              type='submit' 
+              type='submit'
               disabled={!userId}
             >
               Login
@@ -69,5 +68,11 @@ function mapStateToProps({ users }) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    logIn: (userId) => dispatch(setAuthedUser(userId)),
+  };
+}
 
-export default connect(mapStateToProps)(Login);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
