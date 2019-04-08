@@ -12,9 +12,14 @@ Application has five main pages:
 
 Overview:
 
-![Dashboard](./screenshots/dashboard.png =250x)
-![Question page](./screenshots/question-page.png =250x)
-![Leaderboard](./screenshots/leaderboard.png =250x)
+Dashboard:
+![Dashboard](./screenshots/dashboard.png)
+
+Question page:
+![Question page](./screenshots/question-page.png)
+
+Leaderboard:
+![Leaderboard](./screenshots/leaderboard.png)
 
 ## Instalation/running
 
