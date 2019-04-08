@@ -1,8 +1,14 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 
 class UserProfile extends Component {
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    users: PropTypes.object.isRequired,
+  }
+
   handleLogOut = () => {
     const { dispatch } = this.props;
 

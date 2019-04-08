@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Fragment } from 'react'
 import { isVoted } from '../utils/helpers';
 
@@ -20,8 +21,8 @@ export default function VoteOption({ authedUser, onVote, optionId, question }) {
       <p>...{option.text}?</p>
       {voted && (
         <Fragment>
-          <div class='progress-bar'>
-            <div class='progress' style={{width: percent}}>
+          <div className='progress-bar'>
+            <div className='progress' style={{width: percent}}>
               <p>
                 {percent}
               </p>
@@ -33,3 +34,10 @@ export default function VoteOption({ authedUser, onVote, optionId, question }) {
     </button>
   )
 }
+
+VoteOption.propTypes = {
+  authedUser: PropTypes.string.isRequired,
+  onVote: PropTypes.func.isRequired,
+  optionId: PropTypes.string.isRequired,
+  question: PropTypes.object.isRequired,
+};

@@ -1,9 +1,18 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import VoteOption from './VoteOption';
 import { handleQuestionAnswer } from '../actions/questions';
 
 class QuestionPage extends Component {
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    author: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired,
+    match: PropTypes.object.isRequired,
+    question: PropTypes.object.isRequired,
+  }
+
   handleVote = (option) => {
     const { authedUser, dispatch, id } = this.props;
 

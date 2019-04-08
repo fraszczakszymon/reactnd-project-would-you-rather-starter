@@ -1,8 +1,14 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GiTrophy } from "react-icons/gi";
 
 class User extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
+  }
+
   render() {
     const { place, user } = this.props;
 

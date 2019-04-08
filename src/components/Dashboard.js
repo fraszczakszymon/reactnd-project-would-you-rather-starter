@@ -1,9 +1,15 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Question from './Question';
 
 class Dashboard extends Component {
+  static propTypes = {
+    votedQuestions: PropTypes.array.isRequired,
+    questionIds: PropTypes.array.isRequired,
+  }
+
   render() {
     const { votedQuestions, questionIds } = this.props;
     const params = new URLSearchParams(window.location.search);
@@ -32,7 +38,7 @@ class Dashboard extends Component {
           }
         </ul>
         {selectedQuestionIds.length === 0 && (
-          <div>
+          <div className='center'>
             <h3>There are no questions yet</h3>
             <p><Link to='/add'>Create a new one</Link></p>
           </div>

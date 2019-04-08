@@ -1,8 +1,13 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
+  static propTypes = {
+    users: PropTypes.object.isRequired,
+  }
+
   state = {
     userId: '',
   }
